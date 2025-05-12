@@ -588,7 +588,7 @@ nav.active .mobile-toggle {
 .department-image {
     height: 200px;
     overflow: hidden;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 10px 10px;
     position: relative;
 }
 
