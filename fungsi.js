@@ -1,0 +1,126 @@
+const mobileToggle = document.querySelector('.mobile-toggle');
+const nav = document.querySelector('nav');
+
+if (mobileToggle) {
+    mobileToggle.addEventListener('click', () => {
+        mobileToggle.classList.toggle('active');
+        nav.classList.toggle('active');
+
+        // Toggle animasi ikon
+        const openIcon = mobileToggle.querySelector('.open-icon');
+        const closeIcon = mobileToggle.querySelector('.close-icon');
+
+        if (nav.classList.contains('active')) {
+            openIcon.style.opacity = '0';
+            closeIcon.style.opacity = '1';
+        } else {
+            openIcon.style.opacity = '1';
+            closeIcon.style.opacity = '0';
+        }
+
+        // Animasi item menu
+        const menuItems = document.querySelectorAll('#menu li');
+        menuItems.forEach((item, index) => {
+            if (nav.classList.contains('active')) {
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, 100 + index * 50);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(50px)';
+            }
+        });
+    });
+
+    // Tutup menu saat klik di overlay
+    const menuOverlay = document.querySelector('.menu-overlay');
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', () => {
+            mobileToggle.classList.remove('active');
+            nav.classList.remove('active');
+
+            const openIcon = mobileToggle.querySelector('.open-icon');
+            const closeIcon = mobileToggle.querySelector('.close-icon');
+            openIcon.style.opacity = '1';
+            closeIcon.style.opacity = '0';
+
+            const menuItems = document.querySelectorAll('#menu li');
+            menuItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(50px)';
+            });
+        });
+    }
+}
+
+// 2. Scroll Header Effect
+const header = document.getElementById('header');
+if (header) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+}
+
+// 3. Scroll Reveal Animation (untuk fade-in, slide-up, dll)
+const revealElements = document.querySelectorAll(
+    '.reveal, .fade-in, .slide-up, .slide-in-left, .slide-in-right, .scale-in, .stagger-item, .glass, .department-card'
+);
+
+const observerOptions = {
+    threshold: 0.15,
+};
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+revealElements.forEach(el => {
+    revealObserver.observe(el);
+});
+
+// 4. Glow Cursor Hover Effect
+document.querySelectorAll('.glow-on-hover').forEach(element => {
+    element.addEventListener('mousemove', e => {
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        element.style.setProperty('--x', `${x}px`);
+        element.style.setProperty('--y', `${y}px`);
+    });
+});
+
+// 5. Smooth Scroll ke Anchor (#section)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// 6. Parallax Background Effect (jika ada .parallax)
+document.querySelectorAll('.parallax').forEach(el => {
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        el.style.transform = `translateY(${scrollY * 0.1}px)`;
+    });
+});
