@@ -1,3 +1,16 @@
+/*
+ * This code was written by Azuan — with love, bugs, and late-night heartbreaks.
+ * Supported by XiezuMedia, who believed in the chaos.
+ *
+ * © 2025 Zykuan & XiezuMedia. All rights reserved.
+ * Feel free to use or cherish it, like a good ex...
+ * But remove this watermark? That’s like forgetting who loved you first.
+ * And trust me — we notice.
+ *
+ * Don’t ghost the author.
+ * www.instagram.com/zuanxfnd
+ */
+
 const mobileToggle = document.querySelector('.mobile-toggle');
 const nav = document.querySelector('nav');
 
@@ -6,7 +19,6 @@ if (mobileToggle) {
         mobileToggle.classList.toggle('active');
         nav.classList.toggle('active');
 
-        // Toggle animasi ikon
         const openIcon = mobileToggle.querySelector('.open-icon');
         const closeIcon = mobileToggle.querySelector('.close-icon');
 
@@ -18,7 +30,6 @@ if (mobileToggle) {
             closeIcon.style.opacity = '0';
         }
 
-        // Animasi item menu
         const menuItems = document.querySelectorAll('#menu li');
         menuItems.forEach((item, index) => {
             if (nav.classList.contains('active')) {
@@ -33,7 +44,6 @@ if (mobileToggle) {
         });
     });
 
-    // Tutup menu saat klik di overlay
     const menuOverlay = document.querySelector('.menu-overlay');
     if (menuOverlay) {
         menuOverlay.addEventListener('click', () => {
@@ -54,7 +64,6 @@ if (mobileToggle) {
     }
 }
 
-// 2. Scroll Header Effect
 const header = document.getElementById('header');
 if (header) {
     window.addEventListener('scroll', () => {
@@ -66,7 +75,6 @@ if (header) {
     });
 }
 
-// 3. Scroll Reveal Animation (untuk fade-in, slide-up, dll)
 const revealElements = document.querySelectorAll(
     '.reveal, .fade-in, .slide-up, .slide-in-left, .slide-in-right, .scale-in, .stagger-item, .glass, .department-card'
 );
@@ -88,7 +96,6 @@ revealElements.forEach(el => {
     revealObserver.observe(el);
 });
 
-// 4. Glow Cursor Hover Effect
 document.querySelectorAll('.glow-on-hover').forEach(element => {
     element.addEventListener('mousemove', e => {
         const rect = element.getBoundingClientRect();
@@ -100,7 +107,6 @@ document.querySelectorAll('.glow-on-hover').forEach(element => {
     });
 });
 
-// 5. Smooth Scroll ke Anchor (#section)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -117,7 +123,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// 6. Parallax Background Effect (jika ada .parallax)
 document.querySelectorAll('.parallax').forEach(el => {
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
