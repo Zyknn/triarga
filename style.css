@@ -673,6 +673,8 @@ nav.active .mobile-toggle {
 .facilities .glass {
     cursor: pointer;
     position: relative;
+    outline: none; 
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
 }
 
 .facilities .glass::before {
@@ -682,7 +684,12 @@ nav.active .mobile-toggle {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.5), transparent 70%);
+    background: linear-gradient(
+        120deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.5),
+        transparent 70%
+    );
     background-size: 200% 100%;
     background-position: -100% 0;
     border-radius: 20px;
