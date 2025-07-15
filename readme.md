@@ -35,7 +35,6 @@ Website ini bisa langsung dijalankan di browser tanpa framework tambahan.
 | `index.html`      | Halaman utama website                         |
 | `style.css`       | Styling, warna, layout                        |
 | `fungsi.js`       | (Opsional) efek interaktif tambahan           |
-| `/images/`        | Logo, foto sekolah, ikon jurusan, dsb         |
 
 ---
 
@@ -45,7 +44,6 @@ Kamu dapat mengubah:
 
 - Logo dan nama sekolah di `index.html`
 - Warna dan layout di `style.css`
-- Foto-foto di folder `/images`
 - Konten teks (profil, jurusan, dll) langsung di HTML
 
 ---
